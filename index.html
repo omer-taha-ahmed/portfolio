@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Omer Taha Ahmed - Cloud Solutions Architect for multi-cloud, Kubernetes, and modern cloud platforms">
+  <title>Omer Taha Ahmed | Cloud Solutions Architect</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- CSS STYLES --- */
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --primary:#0A66C2;
+      --primary-light:#1B7DE0;
+      --accent:#00D4FF;
+      --accent-warm:#FF6B35;
+      --dark:#020617;
+      --dark-soft:#0F172A;
+      --gray:#6B7280;
+      --gray-light:#9CA3AF;
+      --light:#F3F4F6;
+      --white:#FFFFFF;
+      --success:#22C55E;
+      --font-display:'Crimson Pro',serif;
+      --font-body:'DM Sans',sans-serif;
+      --font-mono:'JetBrains Mono',monospace;
+    }
+    body{
+      font-family:var(--font-body);
+      line-height:1.6;
+      color:var(--white);
+      background:radial-gradient(circle at top left,#0F172A 0,#020617 45%,#000 100%);
+      overflow-x:hidden;
+    }
+    html{scroll-behavior:smooth}
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(circle at 10% 20%,rgba(56,189,248,.18) 0,transparent 45%),
+        radial-gradient(circle at 80% 70%,rgba(129,140,248,.18) 0,transparent 45%);
+      pointer-events:none;
+      z-index:0;
+    }
+    .page-grid{position:relative;pointer-events:none}
+    .page-grid::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(148,163,184,.07) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(148,163,184,.07) 1px,transparent 1px);
+      background-size:120px 120px;
+      opacity:.4;
+      mix-blend-mode:screen;
+      z-index:0;
+    }
+    nav{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:50;
+      padding:1.25rem 0;
+      transition:all .3s ease;
+    }
+    nav.scrolled{
+      background:rgba(15,23,42,.92);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(148,163,184,.2);
+      padding:.85rem 0;
+    }
+    nav .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 1.75rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      font-family:var(--font-mono);
+      letter-spacing:.14em;
+      font-size:.92rem;
+      color:var(--gray-light);
+      text-transform:uppercase;
+    }
+    .logo-initials{
+      width:32px;
+      height:32px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 0,#38BDF8 0,#1D4ED8 40%,#0B1120 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:.9rem;
+      color:var(--white);
+      box-shadow:0 8px 24px rgba(15,23,42,.8);
+    }
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:2.25rem;
+      font-size:.92rem;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--gray-light);
+      font-weight:500;
+      position:relative;
+      transition:color .2s ease;
+    }
+    nav a::after{
+      content:'';
+      position:absolute;
+      bottom:-6px;
+      left:0;
+      width:0;
+      height:2px;
+      background:linear-gradient(90deg,#38BDF8,#6366F1);
+      transition:width .25s ease;
+    }
+    nav a:hover{color:var(--white)}
+    nav a:hover::after{width:100%}
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:7.5rem 1.75rem 5rem;
+      z-index:1;
+    }
+    .hero .container{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:3fr 2fr;
+      gap:3rem;
+      align-items:center;
+    }
+    .hero-content{animation:fadeInUp .8s ease-out}
+    .hero-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      color:#38BDF8;
+      font-family:var(--font-mono);
+      font-size:.83rem;
+      margin-bottom:1.3rem;
+      padding:.5rem 1.1rem;
+      background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(79,70,229,.12));
+      border-radius:999px;
+      border:1px solid rgba(129,140,248,.3);
+    }
+    .hero-tag-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:#22C55E;
+      box-shadow:0 0 0 4px rgba(34,197,94,.25);
+    }
+    .hero h1{
+      font-family:var(--font-display);
+      font-size:clamp(2.9rem,6vw,4.4rem);
+      line-height:1.08;
+      color:var(--white);
+      margin-bottom:1.4rem;
+      letter-spacing:-.03em;
+    }
+    .hero h1 span{
+      background:linear-gradient(135deg,#38BDF8,#818CF8);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .hero-subtitle{
+      font-size:1.08rem;
+      color:var(--gray-light);
+      margin-bottom:1.8rem;
+      max-width:36rem;
+    }
+    .hero-location{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      color:var(--gray);
+      font-size:.98rem;
+      margin-bottom:1.5rem;
+    }
+    .status-indicator{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      background:rgba(22,163,74,.12);
+      border:1px solid rgba(34,197,94,.4);
+      padding:.55rem 1.1rem;
+      border-radius:999px;
+      color:#4ADE80;
+      font-size:.9rem;
+      font-weight:500;
+      margin-bottom:2.3rem;
+    }
+    .status-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:#22C55E;
+      animation:pulse 1.8s infinite;
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1);opacity:1}
+      50%{transform:scale(.7);opacity:.4}
+    }
+    .hero-cta{display:flex;flex-wrap:wrap;gap:1rem}
+    .btn{
+      padding:.9rem 1.8rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:.95rem;
+      transition:all .23s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      border:none;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,#38BDF8,#6366F1);
+      color:var(--white);
+      box-shadow:0 10px 35px rgba(15,23,42,.6);
+    }
+    .btn-primary::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+      transform:translateX(-120%);
+      transition:transform .45s ease;
+    }
+    .btn-primary:hover::before{transform:translateX(120%)}
+    .btn-primary:hover{
+      transform:translateY(-1px) scale(1.01);
+      box-shadow:0 16px 45px rgba(15,23,42,.75);
+    }
+    .btn-secondary{
+      background:rgba(15,23,42,.7);
+      color:var(--gray-light);
+      border:1px solid rgba(148,163,184,.45);
+      backdrop-filter:blur(10px);
+    }
+    .btn-secondary:hover{
+      border-color:rgba(148,163,184,.9);
+      color:var(--white);
+      transform:translateY(-1px);
+      background:rgba(15,23,42,.85);
+    }
+    .btn-small{padding:.55rem 1.1rem;font-size:.82rem;border-radius:999px}
+    .hero-right{position:relative;padding:1.5rem}
+    .hero-panel{
+      background:radial-gradient(circle at top,#1E293B,#020617);
+      border-radius:1.5rem;
+      border:1px solid rgba(148,163,184,.35);
+      box-shadow:0 24px 60px rgba(15,23,42,.9);
+      padding:1.7rem 1.6rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-panel-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:1.2rem;
+      font-size:.75rem;
+      color:var(--gray-light);
+    }
+    .hero-panel-header span{
+      font-family:var(--font-mono);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+    }
+    .hero-panel-badges{display:grid;gap:.9rem;margin-top:.6rem;font-size:.78rem}
+    .hero-mini-tag{
+      padding:.27rem .7rem;
+      border-radius:999px;
+      background:rgba(30,64,175,.6);
+      border:1px solid rgba(129,140,248,.6);
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      color:var(--gray-light);
+    }
+    .hero-mini-tag span{
+      font-family:var(--font-mono);
+      font-size:.75rem;
+      color:#E5E7EB;
+    }
+    .hero-metric-row{
+      display:flex;
+      justify-content:space-between;
+      font-size:.8rem;
+      color:var(--gray-light);
+    }
+    .hero-metric-row strong{color:var(--white);font-size:.9rem}
+    .hero-panel-glow{
+      position:absolute;
+      width:140px;
+      height:140px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(56,189,248,.22),transparent 60%);
+      top:-30px;
+      right:-40px;
+      opacity:.8;
+    }
+    section{position:relative;padding:6rem 1.75rem;z-index:1}
+    .section-dark{
+      background:rgba(2,6,23,.95);
+      border-top:1px solid rgba(15,23,42,1);
+      border-bottom:1px solid rgba(15,23,42,1);
+    }
+    .cv-section{background:radial-gradient(circle at top,#020617,#020617)}
+    .certifications-section{
+      background:rgba(2,6,23,.97);
+      border-top:1px solid rgba(15,23,42,1);
+    }
+    .container{max-width:1200px;margin:0 auto}
+    .section-header{
+      max-width:800px;
+      margin:0 auto 3.5rem;
+      text-align:center;
+    }
+    .section-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      color:#38BDF8;
+      font-family:var(--font-mono);
+      font-size:.8rem;
+      margin-bottom:.9rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .section-tag-dot{
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:#38BDF8;
+    }
+    h2{
+      font-family:var(--font-display);
+      font-size:clamp(2.1rem,4vw,2.7rem);
+      font-weight:700;
+      line-height:1.25;
+      margin-bottom:.9rem;
+      letter-spacing:-.02em;
+      color:var(--white);
+    }
+    .section-subtitle{
+      font-size:1rem;
+      color:var(--gray-light);
+      line-height:1.7;
+    }
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.6fr 1.1fr;
+      gap:3rem;
+      align-items:start;
+    }
+    .about-content p{
+      font-size:1rem;
+      line-height:1.8;
+      color:var(--gray-light);
+      margin-bottom:1.2rem;
+    }
+    .about-highlight{
+      font-size:1.05rem;
+      color:#E5E7EB;
+    }
+    .certifications-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+    }
+    .cert-card{
+      background:radial-gradient(circle at top left,#1D4ED8,#0F172A);
+      padding:1rem 1.1rem;
+      border-radius:1rem;
+      border:1px solid rgba(129,140,248,.5);
+      display:flex;
+      flex-direction:column;
+      gap:.2rem;
+      box-shadow:0 18px 40px rgba(15,23,42,.8);
+      font-size:.85rem;
+    }
+    .cert-card h4{font-size:.95rem;font-weight:600;color:var(--white)}
+    .cert-card p{color:#CBD5F5;font-size:.8rem}
+    .cert-pill{
+      margin-top:.4rem;
+      font-family:var(--font-mono);
+      font-size:.7rem;
+      padding:.15rem .5rem;
+      border-radius:999px;
+      background:rgba(15,23,42,.7);
+      border:1px solid rgba(191,219,254,.3);
+      color:#BFDBFE;
+      width:fit-content;
+    }
+    .cv-layout{
+      display:grid;
+      grid-template-columns:1fr 2.2fr;
+      gap:2.5rem;
+      align-items:start;
+    }
+    .cv-text h3{font-size:1.15rem;margin-bottom:.5rem}
+    .cv-text p{
+      font-size:.95rem;
+      color:var(--gray-light);
+      margin-bottom:1.3rem;
+    }
+    .cv-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.8rem;
+      margin-bottom:1.8rem;
+    }
+    .cv-meta{
+      font-size:.85rem;
+      color:var(--gray);
+      font-family:var(--font-mono);
+    }
+    
+    /* Visual replacement for broken Iframe */
+    .cv-preview-card {
+      background:var(--white);
+      border-radius:0.5rem;
+      padding:2.5rem;
+      color:var(--dark);
+      box-shadow:0 20px 45px rgba(15,23,42,.9);
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(148,163,184,.3);
+    }
+    .cv-preview-card::before {
+      content:'PDF PREVIEW';
+      position:absolute;
+      top:0;
+      right:0;
+      background:var(--primary);
+      color:white;
+      padding:0.2rem 0.8rem;
+      font-size:0.7rem;
+      border-bottom-left-radius:0.5rem;
+    }
+    .cv-card-header {
+      border-bottom:2px solid #e2e8f0;
+      padding-bottom:1rem;
+      margin-bottom:1rem;
+    }
+    .cv-card-name {font-family:var(--font-display); font-size:1.5rem; font-weight:700; color:var(--dark)}
+    .cv-card-role {color:#64748b; font-weight:600; text-transform:uppercase; font-size:0.9rem; letter-spacing:0.05em}
+    .cv-card-section {font-size:0.9rem; line-height:1.6; margin-bottom:1rem}
+    .cv-card-section h5 {font-weight:700; color:var(--dark); margin-bottom:0.3rem; font-size:0.95rem}
+    .cv-card-section ul {padding-left:1.2rem; color:#475569}
+    .cv-card-btn {
+      display:block;
+      margin-top:2rem;
+      text-align:center;
+      background:var(--dark);
+      color:white;
+      padding:0.8rem;
+      border-radius:0.5rem;
+      text-decoration:none;
+      font-weight:600;
+      transition:background 0.2s;
+    }
+    .cv-card-btn:hover {background:var(--primary)}
+
+    .cert-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+    .cert-card-full{
+      background:radial-gradient(circle at top left,#020617,#020617);
+      border-radius:1.1rem;
+      border:1px solid rgba(30,64,175,.8);
+      padding:1.3rem 1.25rem 1.4rem;
+      box-shadow:0 18px 42px rgba(15,23,42,.95);
+      display:flex;
+      flex-direction:column;
+      gap:.75rem;
+      font-size:.88rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .cert-card-full::before{
+      content:'';
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at top,rgba(56,189,248,.18),transparent 50%);
+      opacity:0;
+      transition:opacity .25s ease;
+    }
+    .cert-card-full:hover::before{opacity:1}
+    .cert-title{font-size:.97rem;font-weight:600;color:var(--white);position:relative}
+    .cert-meta{font-size:.8rem;color:#94A3B8}
+    .skills-grid{
+      margin-top:.5rem;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.7rem;
+    }
+    .skill-card{
+      background:rgba(15,23,42,.9);
+      border-radius:1.3rem;
+      border:1px solid rgba(30,64,175,.7);
+      padding:1.8rem 1.7rem;
+      box-shadow:0 18px 40px rgba(15,23,42,.9);
+      position:relative;
+      overflow:hidden;
+      font-size:.9rem;
+    }
+    .skill-card::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,rgba(56,189,248,.05),transparent);
+      opacity:0;
+      transition:opacity .22s ease;
+    }
+    .skill-card:hover::before{opacity:1}
+    .skill-icon{
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 0,#38BDF8,#1D4ED8);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:.9rem;
+      font-size:1.1rem;
+    }
+    .skill-card h3{font-size:1rem;margin-bottom:.4rem}
+    .skill-card ul{list-style:none;margin-top:.5rem}
+    .skill-card li{
+      padding:.22rem 0;
+      color:var(--gray-light);
+      font-size:.86rem;
+      padding-left:1rem;
+      position:relative;
+    }
+    .skill-card li::before{
+      content:'›';
+      position:absolute;
+      left:0;
+      color:#38BDF8;
+      font-size:.9rem;
+    }
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:2rem;
+    }
+    .project-card{
+      background:radial-gradient(circle at top,#1E293B,#020617);
+      border-radius:1.4rem;
+      border:1px solid rgba(148,163,184,.4);
+      overflow:hidden;
+      box-shadow:0 18px 45px rgba(15,23,42,.9);
+      display:flex;
+      flex-direction:column;
+    }
+    .project-visual{
+      height:150px;
+      background:linear-gradient(135deg,#1D4ED8,#38BDF8);
+      position:relative;
+      overflow:hidden;
+    }
+    .project-visual::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(45deg,rgba(15,23,42,.12),rgba(15,23,42,.12) 1px,transparent 1px,transparent 8px);
+      mix-blend-mode:soft-light;
+    }
+    .project-number{
+      position:absolute;
+      right:1.4rem;
+      bottom:1.1rem;
+      font-family:var(--font-display);
+      font-size:2.8rem;
+      color:rgba(15,23,42,.22);
+      font-weight:700;
+    }
+    .project-content{padding:1.75rem 1.7rem 1.8rem}
+    .project-date{
+      font-family:var(--font-mono);
+      font-size:.78rem;
+      color:var(--gray);
+      margin-bottom:.7rem;
+    }
+    .project-content h3{
+      font-family:var(--font-display);
+      font-size:1.15rem;
+      color:var(--white);
+      margin-bottom:.7rem;
+    }
+    .project-content p{
+      color:var(--gray-light);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+    .project-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+    .tag{
+      padding:.18rem .7rem;
+      border-radius:999px;
+      font-size:.78rem;
+      border:1px solid rgba(148,163,184,.45);
+      color:#E5E7EB;
+      background:rgba(15,23,42,.8);
+    }
+    .tag.highlight{
+      border-color:rgba(56,189,248,.8);
+      background:radial-gradient(circle at top,rgba(56,189,248,.25),rgba(15,23,42,.95));
+      color:#E0F2FE;
+    }
+    .contact-wrapper{max-width:1060px;margin:0 auto}
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.7rem;
+      margin-top:2.7rem;
+    }
+    .contact-card{
+      background:rgba(15,23,42,.92);
+      border-radius:1.1rem;
+      border:1px solid rgba(148,163,184,.45);
+      padding:1.7rem 1.6rem;
+      text-align:left;
+      display:flex;
+      flex-direction:column;
+      gap:.5rem;
+      font-size:.9rem;
+      box-shadow:0 16px 40px rgba(15,23,42,.9);
+    }
+    .contact-icon{
+      width:32px;
+      height:32px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 0,#38BDF8,#1D4ED8);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1rem;
+      margin-bottom:.5rem;
+    }
+    .contact-card h3{font-size:.97rem;color:var(--white)}
+    .contact-card a{
+      color:#E5E7EB;
+      text-decoration:none;
+      font-size:.9rem;
+      word-break:break-all;
+    }
+    .contact-card a:hover{color:#38BDF8}
+    .contact-form-wrapper{margin-top:3rem}
+    .contact-form{margin-top:1.6rem;max-width:720px}
+    .form-row{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+    }
+    .form-field{display:flex;flex-direction:column;margin-bottom:1rem;font-size:.9rem}
+    .form-field label{
+      margin-bottom:.25rem;
+      color:#CBD5F5;
+      font-size:.84rem;
+    }
+    .form-field input,
+    .form-field textarea{
+      background:rgba(15,23,42,.95);
+      border-radius:.7rem;
+      border:1px solid rgba(30,64,175,.8);
+      padding:.6rem .8rem;
+      color:#E5E7EB;
+      font-size:.9rem;
+    }
+    .form-field textarea{min-height:120px;resize:vertical}
+    .form-field input:focus,
+    .form-field textarea:focus{
+      outline:none;
+      border-color:#38BDF8;
+      box-shadow:0 0 0 1px rgba(56,189,248,.55);
+    }
+    footer{
+      background:#020617;
+      padding:2.4rem 1.75rem 2.2rem;
+      border-top:1px solid rgba(15,23,42,1);
+      text-align:center;
+      font-size:.85rem;
+      color:var(--gray-light);
+    }
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      gap:1.6rem;
+      margin-top:1.2rem;
+      font-size:.85rem;
+    }
+    .footer-links a{
+      color:var(--gray-light);
+      text-decoration:none;
+    }
+    .footer-links a:hover{color:#38BDF8}
+    @media (max-width:1024px){
+      .hero .container{grid-template-columns:1fr}
+      .hero-right{display:none}
+      .about-grid,
+      .cv-layout,
+      .projects-grid,
+      .skills-grid{grid-template-columns:1fr}
+      .cv-preview-card {padding:1.5rem}
+    }
+    @media (max-width:768px){
+      nav .container{padding:0 1.25rem}
+      nav ul{display:none}
+      section{padding:4.5rem 1.25rem}
+      .contact-grid{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+    }
+    .fade-in{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+    .fade-in.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(35px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid"></div>
+
+  <nav id="nav">
+    <div class="container">
+      <div class="logo">
+        <div class="logo-initials">OA</div>
+        <span>Cloud Solutions Architect</span>
+      </div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#skills">Expertise</a></li>
+        <li><a href="#certifications-full">Certifications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          CLOUD SOLUTIONS ARCHITECT · MULTI-CLOUD · K8S
+        </div>
+        <h1>Omer Taha <span>Ahmed</span></h1>
+        <p class="hero-subtitle">
+          Architecting resilient, scalable cloud platforms across providers using Kubernetes, serverless, and modern DevOps practices — turning complex requirements into production-grade systems that stay fast, secure, and reliable.
+        </p>
+        <div class="hero-location">📍 Riyadh, Saudi Arabia</div>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          Available Immediately · Transferable Iqama
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">
+            Let’s work together →
+          </a>
+          <a href="https://github.com/omer-taha-ahmed" target="_blank" class="btn btn-secondary">
+            GitHub profile
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-panel">
+          <div class="hero-panel-header">
+            <span>Profile snapshot</span>
+            <span>Cloud · DevOps · K8s</span>
+          </div>
+          <div class="hero-panel-badges">
+            <div class="hero-mini-tag">
+              <span>99.99%+</span>
+              availability in event-driven and multi-zone designs.
+            </div>
+            <div class="hero-metric-row">
+              <span>Recovery time on failure tests</span>
+              <strong>&lt; 5 minutes</strong>
+            </div>
+            <div class="hero-metric-row">
+              <span>Deployment failure rate</span>
+              <strong>↓ 40% via CI/CD</strong>
+            </div>
+          </div>
+          <div class="hero-panel-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          About
+        </div>
+        <h2>Designing reliable cloud platforms</h2>
+        <p class="section-subtitle">
+          Blending cloud platforms, Kubernetes, and serverless to ship architectures that are simple to operate, resilient by default, and cost-aware.
+        </p>
+      </div>
+      <div class="about-grid fade-in">
+        <div class="about-content">
+          <p class="about-highlight">
+            I’m a certified Cloud Solutions Architect with an Electrical Engineering background and hands-on experience building production-grade infrastructure for real workloads.
+          </p>
+          <p>
+            I translate business and non-functional requirements into secure, highly available, and observable architectures, balancing trade-offs between cost, complexity, and performance.
+          </p>
+          <p>
+            From multi-environment Kubernetes clusters with zero-downtime deployments to event-driven serverless systems, I focus on platforms that are resilient, auditable, and easy to evolve under change.
+          </p>
+        </div>
+        <div>
+          <div class="certifications-grid">
+            <div class="cert-card">
+              <h4>AWS Solutions Architect</h4>
+              <p>Professional</p>
+              <div class="cert-pill">Architecture · HA · DR</div>
+            </div>
+            <div class="cert-card">
+              <h4>CKAD</h4>
+              <p>Certified Kubernetes Application Developer</p>
+              <div class="cert-pill">K8s · Workloads · Patterns</div>
+            </div>
+            <div class="cert-card">
+              <h4>AWS Developer</h4>
+              <p>Associate</p>
+              <div class="cert-pill">APIs · Serverless · CI/CD</div>
+            </div>
+            <div class="cert-card">
+              <h4>AWS Solutions Architect</h4>
+              <p>Associate</p>
+              <div class="cert-pill">Foundations · Networking</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cv" class="cv-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          CV
+        </div>
+        <h2>Curriculum Vitae</h2>
+        <p class="section-subtitle">
+          Access my detailed resume via Dropbox or view the summary below.
+        </p>
+      </div>
+      <div class="cv-layout fade-in">
+        <div class="cv-text">
+          <h3>Cloud Solutions Architect · CV</h3>
+          <p>
+            Detailed experience across cloud platforms, Kubernetes, infrastructure as code, and deployment reliability. Click the buttons to access the full PDF file hosted on Dropbox.
+          </p>
+          <div class="cv-actions">
+            <!-- Dropbox View Link (dl=0) -->
+            <a href="https://www.dropbox.com/scl/fi/nlfzhfbvcr852rh20wq3d/Omer_Taha_Cloud_Solutions_Architect.pdf?rlkey=x6ik48ex81d19dsyp4qr47097&st=5zr6d98v&dl=0" 
+               target="_blank" 
+               class="btn btn-primary">
+              View CV (Dropbox)
+            </a>
+            <!-- Dropbox Download Link (dl=1) -->
+            <a href="https://www.dropbox.com/scl/fi/nlfzhfbvcr852rh20wq3d/Omer_Taha_Cloud_Solutions_Architect.pdf?rlkey=x6ik48ex81d19dsyp4qr47097&st=5zr6d98v&dl=1" 
+               class="btn btn-secondary">
+              Download PDF
+            </a>
+          </div>
+          <div class="cv-meta">
+            Hosted on Dropbox<br>
+            Format: PDF
+          </div>
+        </div>
+        
+        <!-- Visual Summary Card (Replaces broken iframe) -->
+        <div class="cv-preview-card">
+            <div class="cv-card-header">
+                <div class="cv-card-name">OMER TAHA AHMED</div>
+                <div class="cv-card-role">Cloud Solutions Architect</div>
+                <div style="font-size:0.8rem; color:#94a3b8; margin-top:0.2rem;">Riyadh, Saudi Arabia · +966 570 614 590</div>
+            </div>
+            <div class="cv-card-section">
+                <h5>Professional Summary</h5>
+                <p style="font-size:0.85rem; color:#475569; margin-bottom:0.5rem;">Certified Cloud Solutions Architect with strong hands-on architecture experience and an Electrical Engineering foundation.</p>
+            </div>
+            <div class="cv-card-section">
+                <h5>Selected Projects</h5>
+                <ul style="font-size:0.85rem;">
+                    <li><strong>Kubernetes Multi-Env:</strong> Zero-downtime deployments, sub-5min recovery.</li>
+                    <li><strong>Serverless Event-Driven:</strong> 99.99% availability with encryption-by-default.</li>
+                    <li><strong>CI/CD Automation:</strong> Reduced failures by 40% via Blue/Green strategies.</li>
+                </ul>
+            </div>
+            <div class="cv-card-section">
+                <h5>Key Skills</h5>
+                <span style="font-size:0.75rem; background:#f1f5f9; padding:2px 6px; border-radius:4px; margin-right:4px;">AWS Professional</span>
+                <span style="font-size:0.75rem; background:#f1f5f9; padding:2px 6px; border-radius:4px; margin-right:4px;">CKAD</span>
+                <span style="font-size:0.75rem; background:#f1f5f9; padding:2px 6px; border-radius:4px; margin-right:4px;">Kubernetes</span>
+                <span style="font-size:0.75rem; background:#f1f5f9; padding:2px 6px; border-radius:4px; margin-right:4px;">Terraform</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications-full" class="certifications-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          Certifications
+        </div>
+        <h2>Verified cloud credentials</h2>
+        <p class="section-subtitle">
+          Cloud and Kubernetes certifications, all verifiable via Credly, backing real-world architecture and delivery work.
+        </p>
+      </div>
+      <div class="cert-grid">
+        <article class="cert-card-full fade-in">
+          <h3 class="cert-title">AWS Certified Solutions Architect – Professional</h3>
+          <p class="cert-meta">Amazon Web Services · Architecture · Resilience · Cost optimization</p>
+          <a href="https://www.credly.com/earner/earned/badge/b0d907bb-6fe3-4c16-b77f-25f107b182c1"
+             class="btn btn-small btn-secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            Verify on Credly
+          </a>
+        </article>
+
+        <article class="cert-card-full fade-in">
+          <h3 class="cert-title">AWS Certified Solutions Architect – Associate</h3>
+          <p class="cert-meta">Amazon Web Services · Core services · Networking · Security</p>
+          <a href="https://www.credly.com/earner/earned/badge/3fbfcabd-e48c-4099-a6ec-20536c8b0c71"
+             class="btn btn-small btn-secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            Verify on Credly
+          </a>
+        </article>
+
+        <article class="cert-card-full fade-in">
+          <h3 class="cert-title">AWS Certified Developer – Associate</h3>
+          <p class="cert-meta">Amazon Web Services · APIs · Serverless · CI/CD</p>
+          <a href="https://www.credly.com/earner/earned/badge/f116e2eb-001a-4ff7-bc23-6722b475d608"
+             class="btn btn-small btn-secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            Verify on Credly
+          </a>
+        </article>
+
+        <article class="cert-card-full fade-in">
+          <h3 class="cert-title">CKAD: Certified Kubernetes Application Developer</h3>
+          <p class="cert-meta">Cloud Native Computing Foundation · Kubernetes workloads · Application design</p>
+          <a href="https://www.credly.com/earner/earned/badge/c9401317-ce81-4428-b224-c389580869c1"
+             class="btn btn-small btn-secondary"
+             target="_blank"
+             rel="noopener noreferrer">
+            Verify on Credly
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          Expertise
+        </div>
+        <h2>Core technical focus</h2>
+        <p class="section-subtitle">
+          Full-stack cloud architecture: from virtual networks and Kubernetes to CI/CD, observability, and disaster recovery.
+        </p>
+      </div>
+      <div class="skills-grid fade-in">
+        <div class="skill-card">
+          <div class="skill-icon">☁️</div>
+          <h3>Cloud infrastructure</h3>
+          <ul>
+            <li>Virtual networks, subnets, routing, security groups</li>
+            <li>Elastic compute, autoscaling, multi-zone designs</li>
+            <li>Object and block storage for durability</li>
+            <li>Managed relational databases</li>
+            <li>DNS, certificates, and edge networking</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🚀</div>
+          <h3>Modern platforms</h3>
+          <ul>
+            <li>Managed Kubernetes clusters (multi-environment)</li>
+            <li>Serverless functions and event buses</li>
+            <li>API gateways and microservices</li>
+            <li>Event-driven workflows and orchestration</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">⚙️</div>
+          <h3>Automation & IaC</h3>
+          <ul>
+            <li>Terraform and CloudFormation stacks</li>
+            <li>CI/CD pipelines with quality gates</li>
+            <li>Automated provisioning and environment consistency</li>
+            <li>Policy-as-code and configuration management</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3>Networking & delivery</h3>
+          <ul>
+            <li>Load balancing and traffic management</li>
+            <li>Content delivery networks</li>
+            <li>Secure connectivity and zero-trust approaches</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔒</div>
+          <h3>Security & governance</h3>
+          <ul>
+            <li>Security-by-design architectures</li>
+            <li>Identity and access management</li>
+            <li>Encryption in transit and at rest</li>
+            <li>Cost and compliance guardrails</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <h3>Operations</h3>
+          <ul>
+            <li>Monitoring and observability</li>
+            <li>Operational runbooks and SRE practices</li>
+            <li>Backup and disaster recovery planning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          Featured work
+        </div>
+        <h2>Architecture projects</h2>
+        <p class="section-subtitle">
+          Selected projects showing Kubernetes, serverless, CI/CD, and multi-zone architectures delivering measurable outcomes.
+        </p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card fade-in">
+          <div class="project-visual">
+            <div class="project-number">01</div>
+          </div>
+          <div class="project-content">
+            <div class="project-date">OCT 2025 – DEC 2025</div>
+            <h3>Kubernetes multi-environment platform</h3>
+            <p>
+              Designed dev/stage/prod Kubernetes clusters with rolling updates, zero-downtime deployments, RBAC, network isolation, and persistent storage, plus operational runbooks for sub-5-minute recovery.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Kubernetes</span>
+              <span class="tag">RBAC</span>
+              <span class="tag">Zero-downtime</span>
+              <span class="tag highlight">&lt;5 min recovery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-visual">
+            <div class="project-number">02</div>
+          </div>
+          <div class="project-content">
+            <div class="project-date">JAN 2025 – MAR 2025</div>
+            <h3>Serverless event-driven system</h3>
+            <p>
+              Architected an event-driven platform using managed compute, APIs, and workflow orchestration with retries, state handling, and encryption-by-default, achieving 99.99% service availability.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Serverless</span>
+              <span class="tag">Event-driven</span>
+              <span class="tag highlight">99.99% SLA</span>
+              <span class="tag">Security</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-visual">
+            <div class="project-number">03</div>
+          </div>
+          <div class="project-content">
+            <div class="project-date">JAN 2024 – APR 2024</div>
+            <h3>CI/CD deployment automation</h3>
+            <p>
+              Built automated CI/CD pipelines with tests, security checks, and blue/green and rolling deployments, reducing deployment failures and improving recovery time significantly.
+            </p>
+            <div class="project-tags">
+              <span class="tag">CI/CD</span>
+              <span class="tag">Blue/Green</span>
+              <span class="tag highlight">Failure reduction</span>
+              <span class="tag highlight">Faster recovery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-visual">
+            <div class="project-number">04</div>
+          </div>
+          <div class="project-content">
+            <div class="project-date">SEP 2023 – NOV 2023</div>
+            <h3>Fault-tolerant multi-zone platform</h3>
+            <p>
+              Architected a highly available multi-zone application platform with automated scaling, managed failover, resilient data layer, and secure traffic via CDN, improving uptime and cost.
+            </p>
+            <div class="project-tags">
+              <span class="tag">High availability</span>
+              <span class="tag">Multi-zone</span>
+              <span class="tag highlight">High uptime</span>
+              <span class="tag highlight">Cost optimization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-dark">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="section-header">
+          <div class="section-tag">
+            <span class="section-tag-dot"></span>
+            Get in touch
+          </div>
+          <h2>Let’s build something great</h2>
+          <p class="section-subtitle">
+            Open to cloud architecture consulting and full-time roles focused on modern cloud platforms and DevOps.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card fade-in">
+            <div class="contact-icon">✉️</div>
+            <h3>Email</h3>
+            <a href="mailto:omer_ahm@outlook.com">omer_ahm@outlook.com</a>
+          </div>
+          <div class="contact-card fade-in">
+            <div class="contact-icon">📞</div>
+            <h3>Phone</h3>
+            <a href="tel:+966570614590">+966 570 614 590</a>
+          </div>
+          <div class="contact-card fade-in">
+            <div class="contact-icon">🔗</div>
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/omar-taha-ah" target="_blank">Connect on LinkedIn</a>
+          </div>
+          <div class="contact-card fade-in">
+            <div class="contact-icon">💻</div>
+            <h3>GitHub</h3>
+            <a href="https://github.com/omer-taha-ahmed" target="_blank">github.com/omer-taha-ahmed</a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <h3 style="font-size:1rem;margin-bottom:0.4rem;">Send a direct message</h3>
+          <p style="font-size:0.9rem;color:var(--gray-light);max-width:540px;">
+            Messages are sent securely to my email address via FormSubmit.
+          </p>
+
+          <!-- FormSubmit Integration -->
+          <form class="contact-form" 
+                action="https://formsubmit.co/omer_ahm@outlook.com" 
+                method="POST"
+                id="contactForm">
+            
+            <!-- Honeypot for spam protection -->
+            <input type="text" name="_honey" style="display:none">
+            <!-- Disable Captcha -->
+            <input type="hidden" name="_captcha" value="false">
+            <!-- Success Page (None, we use AJAX) -->
+            <input type="hidden" name="_next" value="#">
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name" required placeholder="Your Name">
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required placeholder="your@email.com">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="subject">Subject</label>
+              <input id="subject" type="text" name="subject" placeholder="Project Inquiry">
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="How can I help you?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              Send message →
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Omer Taha Ahmed. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // --- NAVIGATION LOGIC ---
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // --- FADE IN ANIMATION ---
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -80px 0px' }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // --- SMOOTH SCROLLING ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // --- AJAX FORM HANDLING (Smooth Submission) ---
+    document.getElementById('contactForm').addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const originalText = btn.innerText;
+      
+      btn.innerText = "Sending...";
+      btn.disabled = true;
+      btn.style.opacity = "0.7";
+
+      const formData = new FormData(this);
+      
+      try {
+        const response = await fetch(this.action, {
+          method: this.method,
+          body: formData,
+          headers: {
+              'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          alert("Message sent successfully to omer_ahm@outlook.com!");
+          this.reset();
+        } else {
+          alert("Oops! There was a problem submitting your form");
+        }
+      } catch (error) {
+        alert("Oops! There was a problem submitting your form");
+      } finally {
+        btn.innerText = originalText;
+        btn.disabled = false;
+        btn.style.opacity = "1";
+      }
+    });
+  </script>
+</body>
+</html>
